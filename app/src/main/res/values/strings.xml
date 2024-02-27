@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">assignment3</string>
+    <string name="mvp_text">MVP</string>
+    <string name="mvvm_text">MVVM</string>
 </resources>
