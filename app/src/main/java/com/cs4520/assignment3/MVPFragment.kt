@@ -1,13 +1,11 @@
 package com.cs4520.assignment3
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.cs4520.assignment3.databinding.HomeLayoutBinding
 import com.cs4520.assignment3.databinding.MvpLayoutBinding
 
 class MVPFragment : Fragment(R.layout.mvp_layout), Contract.View {
@@ -15,7 +13,7 @@ class MVPFragment : Fragment(R.layout.mvp_layout), Contract.View {
     private var _binding: MvpLayoutBinding? = null
     private val binding get() = _binding!!
 
-    var presenter: CalculatorPresenter? = null
+    var presenter: MVPPresenter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,7 +23,7 @@ class MVPFragment : Fragment(R.layout.mvp_layout), Contract.View {
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = MvpLayoutBinding.inflate(inflater, container, false)
 
-        presenter = CalculatorPresenter(this, MVPModel())
+        presenter = MVPPresenter(this, MVPModel())
 
         _binding!!.addButton.setOnClickListener(View.OnClickListener { presenter!!.addPressed() })
         _binding!!.subButton.setOnClickListener(View.OnClickListener { presenter!!.subtractPressed() })

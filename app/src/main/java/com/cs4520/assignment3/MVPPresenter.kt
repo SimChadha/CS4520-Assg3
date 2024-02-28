@@ -1,7 +1,7 @@
 package com.cs4520.assignment3
 
-class CalculatorPresenter(private val view : Contract.View?,
-                          private val model : Contract.Model) : Contract.Presenter {
+class MVPPresenter(private val view : Contract.View?,
+                   private val model : Contract.Model) : Contract.Presenter {
 
 
     private fun verifyData(): Boolean {
