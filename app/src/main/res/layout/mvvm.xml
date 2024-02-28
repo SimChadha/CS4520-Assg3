@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.cs4520.assignment3.MVVCViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#c4b8e1"
+        android:gravity="center"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:id="@+id/numberField1"
+            android:layout_height="wrap_content"
+            android:hint="@string/numberField1"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:id="@+id/numberField2"
+            android:layout_height="wrap_content"
+            android:hint="@string/numberField1"
+            android:inputType="numberDecimal"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/resultText"/>
+
+        <Button
+            android:id="@+id/addButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/add" />
+        <Button
+            android:id="@+id/subButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/sub" />
+        <Button
+            android:id="@+id/multButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/mult" />
+        <Button
+            android:id="@+id/divButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/div" />
+
+    </LinearLayout>
+</layout>

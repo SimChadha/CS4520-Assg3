@@ -23,7 +23,7 @@ class MVPFragment : Fragment(R.layout.mvp_layout), Contract.View {
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = MvpLayoutBinding.inflate(inflater, container, false)
 
-        presenter = MVPPresenter(this, MVPModel())
+        presenter = MVPPresenter(this, Model())
 
         _binding!!.addButton.setOnClickListener(View.OnClickListener { presenter!!.addPressed() })
         _binding!!.subButton.setOnClickListener(View.OnClickListener { presenter!!.subtractPressed() })
