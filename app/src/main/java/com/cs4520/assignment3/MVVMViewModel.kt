@@ -8,7 +8,9 @@ class MVVMViewModel : ViewModel() {
     private val model: Model = Model()
     private var result: Double? = null
 
+    // Live data objects that our view will observe to update itself accordingly
     val resultText = MutableLiveData<String>()
+    val errorStateChanged = MutableLiveData<Boolean>()
 
 
     private fun validData(): Boolean {
@@ -21,11 +23,10 @@ class MVVMViewModel : ViewModel() {
     fun addPressed() {
         if (validData()) {
             result = model.add(getInput1()!!.toDouble(), getInput2()!!.toDouble())
-            println("Result: " + result)
             resultText.value = result.toString()
         }
         else {
-            println("Bad data!")
+            errorStateChanged.value = errorStateChanged.value?.not()
         }
     }
 
@@ -35,8 +36,7 @@ class MVVMViewModel : ViewModel() {
             resultText.value = result.toString()
         }
         else {
-            // toast stuff
-            print("Helloo")
+            errorStateChanged.value = errorStateChanged.value?.not()
         }
     }
 
@@ -46,17 +46,17 @@ class MVVMViewModel : ViewModel() {
             resultText.value = result.toString()
         }
         else {
-            // toast stuff
+            errorStateChanged.value = errorStateChanged.value?.not()
         }
     }
 
     fun divPressed() {
-        if (validData()) {
+        if (validData() && !getInput2()!!.toDouble().equals(0.0) ) {
             result = model.dividie(getInput1()!!.toDouble(), getInput2()!!.toDouble())
             resultText.value = result.toString()
         }
         else {
-            // toast stuff
+            errorStateChanged.value = errorStateChanged.value?.not()
         }
     }
 
@@ -65,7 +65,6 @@ class MVVMViewModel : ViewModel() {
     }
     fun setInput1(str: String?) {
         model.op1 = str
-        println(model.op1)
     }
 
     private fun getInput2(): String? {
@@ -73,7 +72,6 @@ class MVVMViewModel : ViewModel() {
     }
     fun setInput2(str: String?) {
         model.op2 = str
-        println(model.op1)
     }
 
 }

@@ -51,7 +51,7 @@ class MVPPresenter(private val view : Contract.View?,
 
     override fun dividePressed() {
         if (view != null) {
-            if (verifyData()) {
+            if (verifyData() && !view.getInput2().toDouble().equals(0.0)) {
                 val result = model.dividie(view.getInput1().toDouble(), view.getInput2().toDouble())
                 view.setResult(result.toString())
                 view.clearInputs()

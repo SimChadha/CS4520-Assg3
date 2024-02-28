@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:id="@+id/numberField2"
         android:layout_height="wrap_content"
-        android:hint="@string/numberField1"
+        android:hint="@string/numberField2"
         android:inputType="numberDecimal"/>
 
     <TextView

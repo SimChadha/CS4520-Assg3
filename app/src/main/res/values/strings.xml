@@ -8,6 +8,6 @@
     <string name="sub">Subtract</string>
     <string name="mult">Multiply</string>
     <string name="div">Divide</string>
-    <string name="errorToast">Must put number in each field before operating</string>
+    <string name="errorToast">Invalid inputs for operation</string>
     <string name="result">Result: %1$s</string>
 </resources>
