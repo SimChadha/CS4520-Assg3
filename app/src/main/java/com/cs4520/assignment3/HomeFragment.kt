@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.cs4520.assignment3.databinding.HomeLayoutBinding
 
 class HomeFragment: Fragment(R.layout.home_layout) {
@@ -19,6 +20,11 @@ class HomeFragment: Fragment(R.layout.home_layout) {
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = HomeLayoutBinding.inflate(inflater, container, false)
+
+        _binding!!.mvpButton.setOnClickListener(View.OnClickListener {
+            findNavController().navigate(R.id.action_home_to_mvp)
+        })
+
         return binding.root
     }
 
