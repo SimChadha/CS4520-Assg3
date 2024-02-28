@@ -20,7 +20,7 @@ class MVPPresenter(private val view : Contract.View?,
                 view.setResult(result.toString())
                 view.clearInputs()
             } else {
-                view.displayErrorToast()
+                view.displayErrorToast(false)
             }
         }
     }
@@ -32,7 +32,7 @@ class MVPPresenter(private val view : Contract.View?,
                 view.setResult(result.toString())
                 view.clearInputs()
             } else {
-                view.displayErrorToast()
+                view.displayErrorToast(false)
             }
         }
     }
@@ -44,7 +44,7 @@ class MVPPresenter(private val view : Contract.View?,
                 view.setResult(result.toString())
                 view.clearInputs()
             } else {
-                view.displayErrorToast()
+                view.displayErrorToast(false)
             }
         }
     }
@@ -52,11 +52,12 @@ class MVPPresenter(private val view : Contract.View?,
     override fun dividePressed() {
         if (view != null) {
             if (verifyData() && !view.getInput2().toDouble().equals(0.0)) {
-                val result = model.dividie(view.getInput1().toDouble(), view.getInput2().toDouble())
+                val result = model.divide(view.getInput1().toDouble(), view.getInput2().toDouble())
                 view.setResult(result.toString())
                 view.clearInputs()
             } else {
-                view.displayErrorToast()
+                // Display div by 0 error if input 2 is 0
+                view.displayErrorToast(view.getInput2().toDouble().equals(0.0))
             }
         }
     }

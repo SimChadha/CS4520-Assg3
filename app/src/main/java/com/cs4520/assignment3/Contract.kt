@@ -3,18 +3,7 @@ package com.cs4520.assignment3
 // Contract for our MVP interactions
 interface Contract {
     interface View {
-
-        /**
-         * Displays a given result
-         */
-        fun showResult(result: String)
-
         fun setResult(result: String)
-
-        /**
-         * Re-hides the result for when another operation has started
-         */
-        fun hideResult()
 
         /**
          * Clears the user inputs
@@ -29,7 +18,10 @@ interface Contract {
 
         fun getInput2(): String
 
-        fun displayErrorToast()
+        /**
+         * Displays a generic error or a specific error if passed in true
+         */
+        fun displayErrorToast(specialError: Boolean)
     }
 
     interface Model {
@@ -39,7 +31,7 @@ interface Contract {
         fun add(op1: Double, op2: Double): Double
         fun sub(op1: Double, op2: Double): Double
         fun mult(op1: Double, op2: Double): Double
-        fun dividie(op1: Double, op2: Double): Double
+        fun divide(op1: Double, op2: Double): Double
     }
 
     interface Presenter {

@@ -16,7 +16,7 @@ class Model : Contract.Model {
         return op1 * op2
     }
 
-    override fun dividie(op1: Double, op2: Double): Double {
+    override fun divide(op1: Double, op2: Double): Double {
         return op1 / op2
     }
 }

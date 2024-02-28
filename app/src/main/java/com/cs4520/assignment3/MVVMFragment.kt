@@ -1,6 +1,5 @@
 package com.cs4520.assignment3
 
-import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -12,11 +11,10 @@ import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
-import com.cs4520.assignment3.databinding.MvpLayoutBinding
+import com.cs4520.assignment3.databinding.CalcLayoutBinding
 
-class MVVMFragment : Fragment(R.layout.mvp_layout) {
-    private var _binding: MvpLayoutBinding? = null
+class MVVMFragment : Fragment(R.layout.calc_layout) {
+    private var _binding: CalcLayoutBinding? = null
     private val binding get() = _binding!!
 
     lateinit var viewModel: MVVMViewModel
@@ -35,7 +33,7 @@ class MVVMFragment : Fragment(R.layout.mvp_layout) {
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        _binding = MvpLayoutBinding.inflate(inflater, container, false)
+        _binding = CalcLayoutBinding.inflate(inflater, container, false)
 
         viewModel = MVVMViewModel()
 
@@ -107,13 +105,18 @@ class MVVMFragment : Fragment(R.layout.mvp_layout) {
                 _binding!!.resultText.text = getString(R.string.result, res)
             }
         })
-        viewModel.errorStateChanged.observe(viewLifecycleOwner, Observer {
-            displayErrorToast()
+        viewModel.errorMessageChanged.observe(viewLifecycleOwner, Observer {
+            displayErrorToast(viewModel.isDivideByZeroError.value)
         })
     }
 
-    private fun displayErrorToast() {
-        val toast = Toast.makeText(context, getString(R.string.errorToast), Toast.LENGTH_SHORT)
+    private fun displayErrorToast(divByZero: Boolean?) {
+        val errorStr = if (divByZero != null && divByZero) {
+            getString(R.string.divErrorToast)
+        } else {
+            getString(R.string.genericErrorToast)
+        }
+        val toast = Toast.makeText(context, errorStr, Toast.LENGTH_SHORT)
         toast.show()
     }
 }

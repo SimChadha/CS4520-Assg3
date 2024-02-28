@@ -10,7 +10,8 @@ class MVVMViewModel : ViewModel() {
 
     // Live data objects that our view will observe to update itself accordingly
     val resultText = MutableLiveData<String>()
-    val errorStateChanged = MutableLiveData<Boolean>()
+    val errorMessageChanged = MutableLiveData<Boolean>() // Flipped whenever there is a new error
+    val isDivideByZeroError = MutableLiveData<Boolean>(false) // True if the current error is due to division by 0
 
 
     private fun validData(): Boolean {
@@ -26,7 +27,8 @@ class MVVMViewModel : ViewModel() {
             resultText.value = result.toString()
         }
         else {
-            errorStateChanged.value = errorStateChanged.value?.not()
+            errorMessageChanged.value = errorMessageChanged.value?.not()
+            isDivideByZeroError.value = false
         }
     }
 
@@ -36,7 +38,8 @@ class MVVMViewModel : ViewModel() {
             resultText.value = result.toString()
         }
         else {
-            errorStateChanged.value = errorStateChanged.value?.not()
+            errorMessageChanged.value = errorMessageChanged.value?.not()
+            isDivideByZeroError.value = false
         }
     }
 
@@ -46,17 +49,19 @@ class MVVMViewModel : ViewModel() {
             resultText.value = result.toString()
         }
         else {
-            errorStateChanged.value = errorStateChanged.value?.not()
+            errorMessageChanged.value = errorMessageChanged.value?.not()
+            isDivideByZeroError.value = false
         }
     }
 
     fun divPressed() {
         if (validData() && !getInput2()!!.toDouble().equals(0.0) ) {
-            result = model.dividie(getInput1()!!.toDouble(), getInput2()!!.toDouble())
+            result = model.divide(getInput1()!!.toDouble(), getInput2()!!.toDouble())
             resultText.value = result.toString()
         }
         else {
-            errorStateChanged.value = errorStateChanged.value?.not()
+            errorMessageChanged.value = errorMessageChanged.value?.not()
+            isDivideByZeroError.value = getInput2()!!.toDouble().equals(0.0)
         }
     }
 
