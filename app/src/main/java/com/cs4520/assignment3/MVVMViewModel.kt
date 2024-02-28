@@ -1,12 +1,14 @@
 package com.cs4520.assignment3
 
-import androidx.databinding.BaseObservable
-import androidx.databinding.Bindable
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 
-class MVVCViewModel : BaseObservable() {
+class MVVMViewModel : ViewModel() {
 
     private val model: Model = Model()
     private var result: Double? = null
+
+    val resultText = MutableLiveData<String>()
 
 
     private fun validData(): Boolean {
@@ -19,6 +21,8 @@ class MVVCViewModel : BaseObservable() {
     fun addPressed() {
         if (validData()) {
             result = model.add(getInput1()!!.toDouble(), getInput2()!!.toDouble())
+            println("Result: " + result)
+            resultText.value = result.toString()
         }
         else {
             println("Bad data!")
@@ -28,15 +32,18 @@ class MVVCViewModel : BaseObservable() {
     fun subPressed() {
         if (validData()) {
             result = model.sub(getInput1()!!.toDouble(), getInput2()!!.toDouble())
+            resultText.value = result.toString()
         }
         else {
             // toast stuff
+            print("Helloo")
         }
     }
 
     fun multPressed() {
         if (validData()) {
             result = model.mult(getInput1()!!.toDouble(), getInput2()!!.toDouble())
+            resultText.value = result.toString()
         }
         else {
             // toast stuff
@@ -46,34 +53,27 @@ class MVVCViewModel : BaseObservable() {
     fun divPressed() {
         if (validData()) {
             result = model.dividie(getInput1()!!.toDouble(), getInput2()!!.toDouble())
+            resultText.value = result.toString()
         }
         else {
             // toast stuff
         }
     }
 
-    @Bindable
-    fun getInput1(): String? {
+    private fun getInput1(): String? {
         return model.op1
     }
-    fun setInput1(input: String?) {
-        model.op1 = input
+    fun setInput1(str: String?) {
+        model.op1 = str
+        println(model.op1)
     }
 
-    @Bindable
-    fun getInput2(): String? {
+    private fun getInput2(): String? {
         return model.op2
     }
-    fun setInput2(input: String?) {
-        model.op2 = input
-    }
-
-    @Bindable
-    fun getResult(): String? {
-        return result.toString()
-    }
-    fun setResult(res: String?) {
-        this.result = res?.toDouble()
+    fun setInput2(str: String?) {
+        model.op2 = str
+        println(model.op1)
     }
 
 }

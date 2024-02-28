@@ -13,7 +13,7 @@ class MVPFragment : Fragment(R.layout.mvp_layout), Contract.View {
     private var _binding: MvpLayoutBinding? = null
     private val binding get() = _binding!!
 
-    var presenter: MVPPresenter? = null
+    private var presenter: MVPPresenter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,

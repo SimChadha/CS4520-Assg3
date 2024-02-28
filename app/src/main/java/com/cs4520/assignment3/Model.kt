@@ -19,8 +19,4 @@ class Model : Contract.Model {
     override fun dividie(op1: Double, op2: Double): Double {
         return op1 / op2
     }
-
-    fun getOp1() {
-        return this.op1
-    }
 }

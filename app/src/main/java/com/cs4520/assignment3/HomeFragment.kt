@@ -25,6 +25,10 @@ class HomeFragment: Fragment(R.layout.home_layout) {
             findNavController().navigate(R.id.action_home_to_mvp)
         })
 
+        _binding!!.mvvmButton.setOnClickListener(View.OnClickListener {
+            findNavController().navigate(R.id.action_home_to_mvvc)
+        })
+
         return binding.root
     }
 

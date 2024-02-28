@@ -10,14 +10,19 @@
         android:label="HomeFragment">
         <action android:id="@+id/action_home_to_mvp"
             app:destination="@id/mvpFragment" />
+        <action android:id="@+id/action_home_to_mvvc"
+            app:destination="@id/mvvcFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/mvpFragment"
         android:name="com.cs4520.assignment3.MVPFragment"
         android:label="MVPFragment">
-        <!--        <action android:id="@+id/action_loginFrag_to_pL"-->
-        <!--            app:destination="@id/productListFragment"-->
-        <!--            />-->
+    </fragment>
+
+    <fragment
+        android:id="@+id/mvvcFragment"
+        android:name="com.cs4520.assignment3.MVVMFragment"
+        android:label="MVPFragment">
     </fragment>
 </navigation>
