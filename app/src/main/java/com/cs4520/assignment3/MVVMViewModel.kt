@@ -27,8 +27,8 @@ class MVVMViewModel : ViewModel() {
             resultText.value = result.toString()
         }
         else {
-            errorMessageChanged.value = errorMessageChanged.value?.not()
             isDivideByZeroError.value = false
+            errorMessageChanged.value = errorMessageChanged.value?.not()
         }
     }
 
@@ -38,8 +38,8 @@ class MVVMViewModel : ViewModel() {
             resultText.value = result.toString()
         }
         else {
-            errorMessageChanged.value = errorMessageChanged.value?.not()
             isDivideByZeroError.value = false
+            errorMessageChanged.value = errorMessageChanged.value?.not()
         }
     }
 
@@ -49,8 +49,8 @@ class MVVMViewModel : ViewModel() {
             resultText.value = result.toString()
         }
         else {
-            errorMessageChanged.value = errorMessageChanged.value?.not()
             isDivideByZeroError.value = false
+            errorMessageChanged.value = errorMessageChanged.value?.not()
         }
     }
 
@@ -60,8 +60,8 @@ class MVVMViewModel : ViewModel() {
             resultText.value = result.toString()
         }
         else {
-            errorMessageChanged.value = errorMessageChanged.value?.not()
             isDivideByZeroError.value = getInput2()!!.toDouble().equals(0.0)
+            errorMessageChanged.value = errorMessageChanged.value?.not()
         }
     }
 

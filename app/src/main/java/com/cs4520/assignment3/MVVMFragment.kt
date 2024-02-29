@@ -39,37 +39,14 @@ class MVVMFragment : Fragment(R.layout.calc_layout) {
 
         bindUiToModel(viewModel)
 
-        // Text Changed listeners are used to bind our UI back to the ViewModel so it can
-        // see the changes in user input
-        _binding!!.numberField1.addTextChangedListener { object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                viewModel.setInput1(s.toString())
-            }
-        } }
-
-        _binding!!.numberField2.addTextChangedListener { object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                viewModel.setInput2(s.toString())
-            }
-        } }
-
         observeData()
 
         return binding.root
     }
 
+    /**
+     * Provides ViewModel with user input when a button is clicked and performs the operation
+      */
     private fun bindUiToModel(viewModel: MVVMViewModel) {
         _binding!!.addButton.setOnClickListener(View.OnClickListener {
             updateInputs()
@@ -99,6 +76,10 @@ class MVVMFragment : Fragment(R.layout.calc_layout) {
         _binding!!.numberField2.text.clear()
     }
 
+    /**
+     * Sets the observers for result text and error so the Fragment reacts when the ViewModel
+     * changes
+     */
     private fun observeData() {
         viewModel.resultText.observe(viewLifecycleOwner, Observer { res ->
             if (res != "null") {

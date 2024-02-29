@@ -10,6 +10,7 @@ import com.cs4520.assignment3.databinding.CalcLayoutBinding
 
 class MVPFragment : Fragment(R.layout.calc_layout), Contract.View {
 
+    // Using view binding to inflate and access UI elements
     private var _binding: CalcLayoutBinding? = null
     private val binding get() = _binding!!
 
@@ -25,6 +26,7 @@ class MVPFragment : Fragment(R.layout.calc_layout), Contract.View {
 
         presenter = MVPPresenter(this, Model())
 
+        // Callbacks for the respective presenter method for each button
         _binding!!.addButton.setOnClickListener(View.OnClickListener { presenter!!.addPressed() })
         _binding!!.subButton.setOnClickListener(View.OnClickListener { presenter!!.subtractPressed() })
         _binding!!.multButton.setOnClickListener(View.OnClickListener { presenter!!.multiplyPressed() })
@@ -33,6 +35,7 @@ class MVPFragment : Fragment(R.layout.calc_layout), Contract.View {
         return binding.root
     }
 
+    // Interface methods called by Presenter
     override fun clearInputs() {
         _binding?.numberField1?.text?.clear()
         _binding?.numberField2?.text?.clear()
